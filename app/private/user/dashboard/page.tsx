@@ -1,5 +1,3 @@
-"use server"
-
 import BackButton from "@/components/navigation/BackButton"
 import { redirect } from 'next/navigation'
 
@@ -10,6 +8,7 @@ import { createClient } from '@/utils/supabase/client'
 import Dashboard from "@/components/dashboard/Dashboard"
 
   
+<<<<<<< HEAD
 export default async function = observer(UserDashboardPage) {
 
   const supabase = createClient()
@@ -24,10 +23,14 @@ export default async function = observer(UserDashboardPage) {
     userLoggedIn$.setLoggedIn()
     console.log(userLoggedIn$, "here")
     return (
+=======
+export default function UserDashboardPage() {
+
+  return (
+>>>>>>> main
       <>
       <BackButton path={"javascript:history.go(-1)"} />
       <Dashboard />
       </>
     )
-  }
 }
