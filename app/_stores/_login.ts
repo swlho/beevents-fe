@@ -2,12 +2,23 @@ import {observable} from "@legendapp/state";
 
 interface Login {
     loggedIn: boolean,
-    setLoggedIn: (bool:boolean) => void;
+    setLoggedIn: () => void,
+    user: {
+        uuid: string,
+        firstName: string,
+        lastName: string,
+        email: string
+    }
 }
 
 export const hasLoggedIn$ = observable<Login>({
     loggedIn: false,
     setLoggedIn: () => {
-        hasLoggedIn$.loggedIn.set((b)=>b=true)
+        return hasLoggedIn$.loggedIn.toggle},
+    user:{
+        uuid: "",
+        firstName: "",
+        lastName: "",
+        email: "",
     }
 })
