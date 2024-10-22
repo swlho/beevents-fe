@@ -1,8 +1,15 @@
+"use client"
+
 import React from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import MyEvents from './MyEvents'
+import StaffCalendar from './StaffCalendar'
+import { useEventsByStaffId } from '@/hooks/useEventsByStaffId'
 
 function DashboardTabs() {
+
+  const staffEvents = useEventsByStaffId(3, false)
+
   return (
     <Tabs defaultValue="my-events" className="w-full h-full bg-gray-100">
     <TabsList className="grid w-full grid-cols-4 bg-yellow-400">
@@ -13,8 +20,8 @@ function DashboardTabs() {
     </TabsList>
 
     {/* DASHBOARD CONTENT */}
-        <TabsContent value="my-events"><MyEvents/></TabsContent>
-        <TabsContent value="calendar">View your calendar here.</TabsContent>
+        <TabsContent value="my-events"><MyEvents staffEvents={staffEvents}/></TabsContent>
+        <TabsContent value="calendar"><StaffCalendar staffEvents={staffEvents}/></TabsContent>
         <TabsContent value="profile">View your profile here.</TabsContent>
         <TabsContent value="password">Change your password here.</TabsContent>
     </Tabs>

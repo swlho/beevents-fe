@@ -7,13 +7,10 @@ import CreateNewEvent from './CreateNewEvent'
 import ArchivedEvents from './ArchivedEvents'
 import PastEvents from './PastEvents'
 import { Skeleton } from '@/components/ui/skeleton'
-import { useEventsByStaffId } from '@/hooks/useEventsByStaffId'
 import { formatToTimestamp } from '@/lib/utils'
 import { useArchivedEventsByStaffId } from '@/hooks/useArchivedEventsByStaffId'
 
-function MyEventsTabs() {
-
-  const staffEvents = useEventsByStaffId(3, false)
+function MyEventsTabs({staffEvents}) {
 
   const archivedStaffEvents = useArchivedEventsByStaffId(3, true)
 

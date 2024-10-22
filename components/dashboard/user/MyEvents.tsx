@@ -2,9 +2,9 @@ import React from 'react'
 import MyEventsTabs from './MyEventsTabs'
 
 function MyEvents(props) {
-  const {data} = props
+  const {userId, userEvents} = props
   return (
-    <MyEventsTabs userData={data}/>
+    <MyEventsTabs userId={userId} userEvents={userEvents}/>
   )
 }
 

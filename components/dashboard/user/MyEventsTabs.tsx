@@ -9,30 +9,16 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { formatToTimestamp } from '@/lib/utils'
 
 
-function MyEventsTabs({userData}) {
+function MyEventsTabs({userId, userEvents}) {
 
-  const {id} = userData.data[0]
-
-  const userEvents = useEventsByUserId(id, false)
-
-  const archivedEvents = useArchivedEventsByUserId(id, true)
-
-  const { data, isPending, isFetching } = userEvents
+  const archivedEvents = useArchivedEventsByUserId(userId, true)
 
   let bookedEventsArr = []
   let pastEventsArr = []
 
-  if (isPending){
-    return <Skeleton />
-  }
-
-  if (isFetching){
-    return <Skeleton />
-  }
-
-  if(data){
+  if(userEvents){
     //some logic to categorise events by active or past, then pass onto children components
-    data.forEach((event)=>{
+    userEvents.forEach((event)=>{
       if(formatToTimestamp(event.data[0].date_time) >= Date.now()){
         bookedEventsArr.push(event.data[0])
       } else {

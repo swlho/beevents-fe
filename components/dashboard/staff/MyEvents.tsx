@@ -1,9 +1,9 @@
 import React from 'react'
 import MyEventsTabs from './MyEventsTabs'
 
-function MyEvents() {
+function MyEvents({staffEvents}) {
   return (
-    <MyEventsTabs/>
+    <MyEventsTabs staffEvents={staffEvents}/>
   )
 }
 
