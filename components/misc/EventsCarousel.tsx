@@ -49,6 +49,7 @@ return (
                         <h1 className="text-lg font-bold">{event.title}</h1>
                         <h2 className="text-sm">{event.date_time}</h2>
                         <h3 className="text-sm font-light">{event.location}</h3>
+                        <h3 className="text-sm font-light">{event.cost}</h3>
                       </CardContent>
                   </Card>
                 </a>
@@ -59,10 +60,11 @@ return (
                   <DialogDescription>{event.details}</DialogDescription>
                   <DialogDescription>{event.date_time}</DialogDescription>
                   <DialogDescription>{event.location}</DialogDescription>
+                  <DialogDescription>{event.cost}</DialogDescription>
                 </DialogHeader>
                 <DialogFooter>
                   <Link href={`/events/${event.event_id}`}>
-                    <Button>Go to event page</Button>
+                    <Button className="rounded-2xl bg-yellow-400 hover:bg-yellow-100">Go to event page</Button>
                   </Link>
                 </DialogFooter>
               </DialogContent>

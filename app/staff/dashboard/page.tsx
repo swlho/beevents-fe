@@ -1,4 +1,4 @@
-import Dashboard from "@/components/dashboard/Dashboard"
+import Dashboard from "@/components/dashboard/staff/Dashboard"
 import BackButton from "@/components/navigation/BackButton"
 import { Metadata } from "next"
 
@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     return (
       <>
       <BackButton path={"/"} text={'Go to Home Page'}/>
+      <h2 className="font-medium mb-5">Welcome to the staff dashboard</h2>
       <Dashboard />
       </>
     )

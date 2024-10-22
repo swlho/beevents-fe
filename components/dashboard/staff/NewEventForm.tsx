@@ -16,8 +16,10 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { DateTimePicker } from './DateTimePicker'
-import { Textarea } from '../ui/textarea'
-import MultipleSelector from '../ui/multiple-selector'
+import { Textarea } from '@/components/ui/textarea'
+import MultipleSelector from '@/components/ui/multiple-selector'
+import { createStripeProduct } from '@/lib/stripe'
+import { log } from 'console'
 
 
 //TO_DO: CLEAN UP RESET FORM FIELDS AFTER FORM IS SUBMITTED SUCCESSFULLY
@@ -82,19 +84,23 @@ function NewEventForm() {
                 tagArr.push(value.value)
             }
             const postBody = await JSON.stringify({
-                //HARD CODED STAFF ID
+                //TO-DO: HARD CODED STAFF ID
                 staff_id: 3,
                 title: title,
                 date_time: date_time,
                 location: location,
                 details: details,
-                cost: cost,
+                cost: cost*100,
                 tags: tagArr,
                 users_attending: [],
                 is_archived: false,
             })
-            const response = await fetch(`https://beevents-be.onrender.com/events/`, {method: 'POST', headers: {'Content-Type':'application/json'}, body: postBody})
-            if (response.status === 201){
+            const response = await (await fetch(`https://beevents-be.onrender.com/events/`, {method: 'POST', headers: {'Content-Type':'application/json'}, body: postBody})).json()
+            console.log(response);
+            if (response.status_code === 201){
+                //TO-DO - get the event id and put it in the fn
+                const {event_id, title, date_time, cost} = response.created_event.data[0]
+                await createStripeProduct(event_id, title, date_time, cost)
                 setSubmitButtonInnerText("Event successfully created!")
                 setAlertText("🎉 Event successfully created! Create another event? 🎉")
                 reset()
@@ -171,7 +177,7 @@ function NewEventForm() {
         render={({ field }) => (
         <FormItem>
             <FormLabel>Event cost</FormLabel>
-            <FormDescription>Type `0` if the event is free</FormDescription>
+            <FormDescription>Enter amount in £. Type `0` if the event is free</FormDescription>
             <FormControl>
             <Input placeholder="£" {...field} />
             </FormControl>

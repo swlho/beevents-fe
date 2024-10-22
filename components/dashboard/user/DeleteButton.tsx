@@ -11,10 +11,10 @@ import {
   } from "@/components/ui/dialog"
 
 import React from 'react'
-import { Button } from '../ui/button'
+import { Button } from '@/components/ui/button'
 import { useState } from "react";
 
-function DeleteButton({event_id}) {
+function DeleteButton({user_id, event_id}) {
 
     const [open, setOpen] = useState(false);
     const [statusText, setStatusText] = useState("");
@@ -25,16 +25,17 @@ function DeleteButton({event_id}) {
         setOpen(false);
     }
 
+    //CHANGE TO PATCH METHOD
     async function handleClickDelete (){
-        const deleteEventById = async (event_id:number) => {
+        const deleteArchivedEventById = async (user_id:string, event_id:number) => {
             setStatusText("")
             setButtonDisabled(true)
             setButtonInnerText("Deleting...")
-            const response =  await fetch(`https://beevents-be.onrender.com/events/${event_id}`, {method: 'DELETE'})
+            const response =  await fetch(`https://beevents-be.onrender.com/user/${user_id}/archived-events/${event_id}`, {method: 'DELETE'})
             const data = await response.json()
             return data
         }
-        const data = await deleteEventById(event_id)
+        const data = await deleteArchivedEventById(user_id, event_id)
         if(data.message === "Event deletion failed") {
             setStatusText("Something happened... please try again")
             setButtonDisabled(false)
@@ -44,6 +45,7 @@ function DeleteButton({event_id}) {
             setButtonDisabled(false)
             setButtonInnerText("Delete")
             setOpen(false)
+            window.location.reload(false);
         }
     }
 

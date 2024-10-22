@@ -29,7 +29,7 @@ function EventPage () {
   return (
       <>
       <BackButton path={"/"}/>
-      <EventBlock data={data}/>
+      <EventBlock eventData={data}/>
       </>
 )
 

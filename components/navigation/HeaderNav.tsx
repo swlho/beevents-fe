@@ -19,16 +19,15 @@ export async function HeaderNav() {
       <div className="container flex items-center justify-between py-6 mx-auto">
         <Link href="/" className="text-2xl font-semibold no-underline">
         <span>
-            <b className="text-yellow-400">BEE</b>VENTS
+            <b className="text-yellow-400">BEE</b>VENTS🐝
         </span>
         </Link>
         {!data.user?
-          <LoginButtonDialog /> : 
-          <div>
-          <GoToDashboardButton />
-          <SignOutButtonDialog />
-          </div>
-        }
+        <LoginButtonDialog /> : 
+        <div>
+        <GoToDashboardButton />
+        <SignOutButtonDialog />
+        </div>}
       </div>
     </header>
   )
