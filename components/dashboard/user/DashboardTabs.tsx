@@ -6,7 +6,6 @@ import MyEvents from './MyEvents'
 import ProfileTab from './ProfileTab'
 import { Skeleton } from '@/components/ui/skeleton'
 import { UserContext } from '@/app/context/user-provider'
-import { useUserById } from '@/hooks/useUserById'
 import UserCalendar from './UserCalendar'
 import { useEventsByUserId } from '@/hooks/useEventsByUserId'
 
@@ -45,7 +44,7 @@ function DashboardTabs() {
       {/* DASHBOARD CONTENT */}
           <TabsContent value="my-events"><MyEvents userId={id} userEvents={data}/></TabsContent>
           <TabsContent value="calendar"><UserCalendar userEvents={data}/></TabsContent>
-          <TabsContent value="profile"><ProfileTab data={data}/></TabsContent>
+          <TabsContent value="profile"><ProfileTab userId={id}/></TabsContent>
           <TabsContent value="password">Change your password here.</TabsContent>
       </Tabs>
       </>

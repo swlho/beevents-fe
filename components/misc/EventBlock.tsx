@@ -3,6 +3,17 @@
 import { UserContext } from '@/app/context/user-provider'
 import React, { useContext } from 'react'
 import BookEventButton from './BookEventButton'
+import { Badge } from '../ui/badge'
+import { formatDateTime } from '@/lib/utils'
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 
 function EventBlock({eventData}) {
 
@@ -12,18 +23,31 @@ function EventBlock({eventData}) {
 
     const id = user[0]?.id
 
+    const tagsArr = JSON.parse(tags);
+    const date = formatDateTime(date_time)
+
     return (
-      <>
-      <h1>{title}</h1>
-      <h1>{date_time}</h1>
-      <h2>{details}</h2>
-      <h2>{location}</h2>
-      <h2>{cost}</h2>
-      <h3>{tags}</h3>
+          <>
+      <Card className='grid justify-items-start'>
+          <CardHeader>
+            <CardTitle className='font-bold text-4xl'>{title}</CardTitle>
+            <h2>{date}</h2>
+          </CardHeader>
+          <CardContent className='grid space-y-3'>
+            <h2>{details}</h2>
+            <h2>Location: {location}</h2>
+            <h2>{cost===0? "Free": `£${cost/100}`}</h2>
+          </CardContent>
+          <CardFooter className='grid justify-items-start'>
+            <div className='mb-10 flex space-x-2'>
+            {tagsArr.map((tag) => <Badge variant="outline" key={tag} className='outline outline-1 outline-yellow-400 bg-yellow-200'>{tag}</Badge> )}
+            </div>
       {!id? 
         <h2>Log in to book a spot</h2> : 
         <BookEventButton event_id={event_id} cost={cost} title={title} date_time={date_time} user_id={id}/> }
-      </>
+      </CardFooter>
+        </Card>
+        </>
     )
 
   }

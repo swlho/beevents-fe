@@ -13,7 +13,8 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import DeleteButton from './DeleteButton'
 import CancelAndArchiveButton from './CancelAndArchiveButton'
-import { formatToTimestamp } from '@/lib/utils'
+import { formatDateTime, formatToTimestamp } from '@/lib/utils'
+import { Badge } from '@/components/ui/badge'
 
 
 //TO-DO: CLEAN-UP UI ELEMENTS, EG, TAGS
@@ -22,6 +23,7 @@ function DashboardEventCard(props) {
     const {eventData, upcoming, archived} = props
 
     const { event_id, title, date_time, details, location, tags, cost, is_archived } = eventData
+    const tagsArr = JSON.parse(tags);
 
     const [buttonInnerText, setButtonInnerText] = useState(archived? "Unarchive" : "Archive")
     const [buttonDisabled, setButtonDisabled] = useState(false)
@@ -62,12 +64,14 @@ function DashboardEventCard(props) {
     <Card key={event_id}>
         <CardHeader className='bg-white'>
             <CardTitle>{title}</CardTitle>
-            <CardDescription>{date_time}</CardDescription>
+            <div className='flex space-x-2'>
+            {tagsArr.map((tag) => <Badge variant="outline" key={tag} className='outline outline-1 outline-yellow-400 bg-yellow-200'>{tag}</Badge> )}
+            </div>
         </CardHeader>
             <CardContent className='bg-white justify-left mb-6 shadow-lg'>
-                <h2>{location}</h2>
-                <h2>Cost: {cost}</h2>
-                <h3>{tags}</h3>
+                {formatDateTime(date_time)}
+                <h2>Location: {location}</h2>
+                <h2>Cost: {cost===0? "Free" : `£${cost / 100}`}</h2>
                 <Link href={`/events/${event_id}`} target='_blank'>
                 <Button className='bg-yellow-400  rounded-full mt-2 mr-2 hover:bg-yellow-200'>Event Page</Button>
                 </Link>

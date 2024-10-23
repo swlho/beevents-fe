@@ -25,15 +25,12 @@ function UpdateProfileForm({data}) {
     const [alertText, setAlertText] = useState("")
 
 
-    const {id, full_name, email, updated_at} = data.data[0]
+    const {id, full_name, updated_at} = data.data[0]
 
     //ZOD CONFIG
 
     const formSchema = z.object({
             fullName: z.string(),
-            email: z.string().min(1, {
-                message: "Please provide an email address"
-            }),
             updatedAt: z.date(),
     })
 
@@ -41,7 +38,6 @@ function UpdateProfileForm({data}) {
         resolver: zodResolver(formSchema),
         defaultValues: {
             fullName: full_name,
-            email: email,
             updatedAt: updated_at,
         },
     })
@@ -51,16 +47,16 @@ function UpdateProfileForm({data}) {
         // Define a submit handler.
         async function onSubmit(values: z.infer<typeof formSchema>) {
             setButtonDisabled(true)
+            // TO-DO: PATCH
             setAlertText("")
-            setSubmitButtonInnerText("Creating...")
-            const {fullName, email } = values
+            setSubmitButtonInnerText("Updating...")
+            const {fullName} = values
             const postBody = await JSON.stringify({
                 id: id,
                 full_name: fullName,
-                email: email,
                 updated_at: Date.now(),
              })
-            const response = await fetch(`https://beevents-be.onrender.com/user/${id}`, {method: 'POST', headers: {'Content-Type':'application/json'}, body: postBody})
+            const response = await fetch(`https://beevents-be.onrender.com/user/${id}`, {method: 'PATCH', headers: {'Content-Type':'application/json'}, body: postBody})
             if (response.status === 201){
                 setSubmitButtonInnerText("User profile successfully updated!")
                 setAlertText("🎉 User profile successfully updated 🎉")
@@ -87,19 +83,6 @@ function UpdateProfileForm({data}) {
             <FormLabel>Full name</FormLabel>
             <FormControl>
             <Input placeholder={full_name} {...field} />
-            </FormControl>
-            <FormMessage className='text-red-500'/>
-        </FormItem>
-        )}
-        />
-        <FormField
-        control={form.control}
-        name="email"
-        render={({ field }) => (
-        <FormItem>
-            <FormLabel>Email</FormLabel>
-            <FormControl>
-            <Input placeholder={email} {...field} />
             </FormControl>
             <FormMessage className='text-red-500'/>
         </FormItem>

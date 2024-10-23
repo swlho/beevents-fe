@@ -14,3 +14,19 @@ export function formatToTimestamp(dateStr:string){
   // Return the date as timestamp
   return date.getTime();
 }
+
+export function formatDateTime(dateStr:string){
+  const dateObj = new Date(dateStr)
+  const options = {
+    timeZone: "Europe/London",
+    timeZoneName: "shortOffset",
+    hour: "numeric",
+    minute: "numeric",
+    weekday: "long",
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  }
+  const formattedDate = new Intl.DateTimeFormat('en-GB', options).format(dateObj)
+  return formattedDate
+}

@@ -15,6 +15,8 @@ import DeleteButton from './DeleteButton'
 import CancelBookingButton from './CancelBookingButton'
 import { UserContext } from "@/app/context/user-provider";
 import { Button } from '@/components/ui/button'
+import { formatDateTime } from '@/lib/utils'
+import { Badge } from '@/components/ui/badge'
 
 //TO-DO: CLEAN-UP UI ELEMENTS, EG, TAGS
 function DashboardEventCard(props) {
@@ -28,7 +30,7 @@ function DashboardEventCard(props) {
 
     const user = useContext(UserContext)
     const {id} = user[0];
-    
+    const tagsArr = JSON.parse(tags);
 
     function handleOnClick(){
         const patchEventArchivingById = async (user_id:string, event_id:number, bool:boolean) => {
@@ -61,12 +63,14 @@ function DashboardEventCard(props) {
     <Card key={event_id}>
         <CardHeader className='bg-white'>
             <CardTitle>{title}</CardTitle>
-            <CardDescription>{date_time}</CardDescription>
+            <div className='flex space-x-2'>
+            {tagsArr.map((tag) => <Badge variant="outline" key={tag} className='outline outline-1 outline-yellow-400 bg-yellow-200'>{tag}</Badge> )}
+            </div>
         </CardHeader>
             <CardContent className='bg-white justify-left mb-6 shadow-lg'>
-                <h2>{location}</h2>
-                <h2>Cost: {cost}</h2>
-                <h3>{tags}</h3>
+            {formatDateTime(date_time)}
+                <h2>Location: {location}</h2>
+                <h2>Cost: {cost===0? "Free" : `£${cost / 100}`}</h2>
                 <Link href={`/events/${event_id}`} target='_blank'>
                 <Button className='bg-yellow-400  rounded-full mt-2 mr-2 hover:bg-yellow-200'>Event Page</Button>
                 </Link>
