@@ -14,6 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { formatDateTime } from '@/lib/utils'
 
 
 //TO_DO: CLEAN UP RESET FORM FIELDS AFTER FORM IS SUBMITTED SUCCESSFULLY
@@ -31,14 +32,12 @@ function UpdateProfileForm({data}) {
 
     const formSchema = z.object({
             fullName: z.string(),
-            updatedAt: z.date(),
     })
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            fullName: full_name,
-            updatedAt: updated_at,
+            fullName: full_name
         },
     })
     
@@ -52,9 +51,7 @@ function UpdateProfileForm({data}) {
             setSubmitButtonInnerText("Updating...")
             const {fullName} = values
             const postBody = await JSON.stringify({
-                id: id,
                 full_name: fullName,
-                updated_at: Date.now(),
              })
             const response = await fetch(`https://beevents-be.onrender.com/user/${id}`, {method: 'PATCH', headers: {'Content-Type':'application/json'}, body: postBody})
             if (response.status === 201){
@@ -88,7 +85,7 @@ function UpdateProfileForm({data}) {
         </FormItem>
         )}
         />
-        <h2 className='italic text-sm'>Last updated: {updated_at}</h2>
+        <h2 className='italic text-sm'>Last updated: {formatDateTime(updated_at)}</h2>
         <FormMessage className='text-red-500'/>
         <Button type="submit" className='hover:bg-yellow-200 bg-yellow-500 rounded-2xl'disabled={buttonDisabled}>{submitButtonInnerText}</Button>
         <h3>{alertText}</h3>

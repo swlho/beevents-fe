@@ -1,5 +1,5 @@
 // Import your globals here
-import UserProvider from "@/app/context/user-provider";
+import StaffProvider from "@/app/context/staff-provider";
 import "@/styles/globals.css";
 
 export const metadata = {
@@ -10,6 +10,7 @@ export const metadata = {
 export default async function Layout({children}: {children: React.ReactNode}) {
 
     return (
-            <UserProvider>{children}</UserProvider>
+            <StaffProvider>{children}</StaffProvider>
     );
+
 }

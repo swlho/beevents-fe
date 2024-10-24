@@ -34,7 +34,7 @@ function SignOutButtonDialog() {
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-        <Button id="user-login" className="bg-yellow-400 font-medium rounded-2xl text-gray-600 hover:bg-yellow-200" onClick={handleClick}>Cancel</Button>
+        <Button id="user-login" className="w-20 bg-yellow-400 font-medium rounded-2xl text-gray-600 hover:bg-yellow-200" onClick={handleClick}>Cancel</Button>
         <form action="/auth/signout" method="post">
         <Button className="bg-red-400 font-medium rounded-2xl hover:bg-red-200" type="submit">
           Confirm

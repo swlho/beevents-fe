@@ -27,7 +27,7 @@ function LoginButtonDialog() {
       <DialogTrigger asChild>
       <Button id="login" className="bg-yellow-400 font-medium rounded-2xl text-gray-600 hover:bg-yellow-200">Login</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] bg-white">
+      <DialogContent className="bg-white">
         <DialogHeader>
           <DialogTitle>Login</DialogTitle>
           <DialogDescription>
@@ -35,12 +35,14 @@ function LoginButtonDialog() {
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
+          <span className="flex flex-row justify-evenly">
         <Link href="/login">
-        <Button id="user-login" className="bg-yellow-400 font-medium rounded-2xl text-gray-600 hover:bg-yellow-200" onClick={handleClick}>User login</Button>
+        <Button id="user-login" className="mr-2 bg-yellow-400 font-medium rounded-2xl text-gray-600 hover:bg-yellow-200" onClick={handleClick}>User login</Button>
         </Link>
         <Link href="/login/staff">
         <Button id="staff-login" className="bg-yellow-200 font-medium rounded-2xl text-gray-600 hover:bg-yellow-100" onClick={handleClick}>Staff login</Button>
         </Link>
+          </span>
         </DialogFooter>
       </DialogContent>
     </Dialog>

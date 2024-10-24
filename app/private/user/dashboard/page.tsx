@@ -1,7 +1,6 @@
 "use client"
 
 import BackButton from "@/components/navigation/BackButton"
-import {observer} from "@legendapp/state/react"
 import Dashboard from "@/components/dashboard/user/Dashboard"
 
   
@@ -15,4 +14,4 @@ function UserDashboardPage() {
     )
 }
 
-export default observer(UserDashboardPage)
+export default UserDashboardPage

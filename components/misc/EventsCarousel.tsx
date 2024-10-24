@@ -15,12 +15,11 @@ import { useEvents } from "@/hooks/useEvents"
 import Link from "next/link"
 import { Button } from "../ui/button"
 import { Skeleton } from "../ui/skeleton"
-import { Badge } from "@/components/ui/badge"
 import { formatDateTime } from "@/lib/utils"
 
-export default function EventsCarousel({subtitle, titlestyle}){
+export default function EventsCarousel({subtitle, titlestyle, useFilter}){
 
-    const {data, isPending, isError, isFetching} = useEvents(false)
+    const {data, isPending, isError, isFetching} = useEvents(false, ["date_time","false"])
 
     if (isPending){
         return <Skeleton/>
@@ -34,12 +33,18 @@ export default function EventsCarousel({subtitle, titlestyle}){
         return <span>Error!</span>
     }
 
+    const filter = (event)=>{
+      const event_date = new Date(event.date_time)
+      const today = new Date()
+      const futureDate30 = new Date(new Date().setDate(today.getDate() + 30));
+      return event_date < futureDate30}
+
 return (
   <div className="flex flex-col gap-3 row-start-2 items-center sm:items-start">
       <h1 className={titlestyle}>{subtitle}</h1>
         <Carousel className="w-4/6 lg:w-full max-w-screen-md ">
             <CarouselContent className="-ml-1">
-                {data.data.map((event)=>{
+                {data.data.filter(useFilter? filter: (event)=>{return event}).map((event)=>{
                   
     return (
         <CarouselItem className="md:basis-1/2 lg:basis-1/3" key={event.event_id}>
@@ -60,7 +65,6 @@ return (
               <DialogContent className="sm:max-w-screen-md bg-white grid justify-items-start space-y-2">
                 <DialogHeader className="grid justify-items-start">
                   <DialogTitle>{event.title}</DialogTitle>
-                  <DialogDescription>{event.details}</DialogDescription>
                   <DialogDescription>{formatDateTime(event.date_time)}</DialogDescription>
                   <DialogDescription>{event.location}</DialogDescription>
                   <DialogDescription>{event.cost===0? "Free" : `£${event.cost / 100}`}</DialogDescription>

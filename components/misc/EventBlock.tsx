@@ -43,7 +43,7 @@ function EventBlock({eventData}) {
             {tagsArr.map((tag) => <Badge variant="outline" key={tag} className='outline outline-1 outline-yellow-400 bg-yellow-200'>{tag}</Badge> )}
             </div>
       {!id? 
-        <h2>Log in to book a spot</h2> : 
+        <h2 className='font-bold'>Log in to book a spot</h2> : 
         <BookEventButton event_id={event_id} cost={cost} title={title} date_time={date_time} user_id={id}/> }
       </CardFooter>
         </Card>
