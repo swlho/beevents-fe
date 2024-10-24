@@ -1,20 +1,17 @@
-import React from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import BookedEvents from './BookedEvents'
-import ArchivedEvents from './ArchivedEvents'
-import PastEvents from './PastEvents'
-import { useEventsByUserId } from '@/hooks/useEventsByUserId'
 import { useArchivedEventsByUserId } from '@/hooks/useArchivedEventsByUserId'
-import { Skeleton } from '@/components/ui/skeleton'
 import { formatToTimestamp } from '@/lib/utils'
+import ArchivedEvents from './ArchivedEvents'
+import BookedEvents from './BookedEvents'
+import PastEvents from './PastEvents'
 
 
 function MyEventsTabs({userId, userEvents}) {
 
   const archivedEvents = useArchivedEventsByUserId(userId, true)
 
-  let bookedEventsArr = []
-  let pastEventsArr = []
+  const bookedEventsArr = []
+  const pastEventsArr = []
 
   if(userEvents){
     //some logic to categorise events by active or past, then pass onto children components

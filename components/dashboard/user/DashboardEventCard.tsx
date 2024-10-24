@@ -1,22 +1,20 @@
 "use client"
 
-import React, { useContext, useState } from 'react'
 import {
     Card,
     CardContent,
-    CardDescription,
-    CardFooter,
     CardHeader,
-    CardTitle,
-  } from "@/components/ui/card"
+    CardTitle
+} from "@/components/ui/card"
+import { useContext, useState } from 'react'
 
-import Link from 'next/link'
-import DeleteButton from './DeleteButton'
-import CancelBookingButton from './CancelBookingButton'
-import { UserContext } from "@/app/context/user-provider";
+import { UserContext } from "@/app/context/user-provider"
+import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { formatDateTime } from '@/lib/utils'
-import { Badge } from '@/components/ui/badge'
+import Link from 'next/link'
+import CancelBookingButton from './CancelBookingButton'
+import DeleteButton from './DeleteButton'
 
 //TO-DO: CLEAN-UP UI ELEMENTS, EG, TAGS
 function DashboardEventCard(props) {
@@ -41,7 +39,7 @@ function DashboardEventCard(props) {
         setButtonDisabled(true)
         setButtonInnerText("Done!")
         patchEventArchivingById(id, event_id, !userarchived)
-        window.location.reload(false);
+        window.location.reload();
     }
 
     function returnCardButton(){ //Fn to conditionally return the correct action button

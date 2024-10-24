@@ -41,7 +41,7 @@ function CancelAndArchiveButton({event_id}) {
                 setButtonDisabled(false)
                 setButtonInnerText("Confirm")
                 setOpen(false)
-                window.location.reload(false);
+                window.location.reload();
             } else {
                 setStatusText("Something happened... please try again")
                 setButtonDisabled(false)

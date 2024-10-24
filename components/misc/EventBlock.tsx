@@ -1,18 +1,17 @@
 "use client"
 
 import { UserContext } from '@/app/context/user-provider'
-import React, { useContext } from 'react'
-import BookEventButton from './BookEventButton'
-import { Badge } from '../ui/badge'
 import { formatDateTime } from '@/lib/utils'
+import { useContext } from 'react'
+import { Badge } from '../ui/badge'
+import BookEventButton from './BookEventButton'
 
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card"
 
 function EventBlock({eventData}) {

@@ -1,8 +1,7 @@
 "use client"
 
-import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
-import { isMonday } from 'date-fns'
+import FullCalendar from '@fullcalendar/react'
 
 function StaffCalendar({staffEvents}) {
 

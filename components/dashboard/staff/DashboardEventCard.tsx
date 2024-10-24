@@ -1,20 +1,18 @@
 "use client"
 
-import React, { useState } from 'react'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import {
     Card,
     CardContent,
-    CardDescription,
-    CardFooter,
     CardHeader,
-    CardTitle,
-  } from "@/components/ui/card"
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
-import DeleteButton from './DeleteButton'
-import CancelAndArchiveButton from './CancelAndArchiveButton'
+    CardTitle
+} from "@/components/ui/card"
 import { formatDateTime, formatToTimestamp } from '@/lib/utils'
-import { Badge } from '@/components/ui/badge'
+import Link from 'next/link'
+import { useState } from 'react'
+import CancelAndArchiveButton from './CancelAndArchiveButton'
+import DeleteButton from './DeleteButton'
 
 
 //TO-DO: CLEAN-UP UI ELEMENTS, EG, TAGS
@@ -32,7 +30,7 @@ function DashboardEventCard(props) {
         const patchEventById = async (id:number, bool:boolean) => {
             const response =  await fetch(`https://beevents-be.onrender.com/events/${id}?is_archived=${bool}`, {method: 'PATCH'})
             const data = await response.json()
-            window.location.reload(false);
+            window.location.reload();
             return data
         }
         setButtonDisabled(true)

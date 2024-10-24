@@ -1,21 +1,20 @@
-import React, { useState } from 'react'
-import { useEvents } from "@/hooks/useEvents"
 import { Skeleton } from '@/components/ui/skeleton'
+import { useEvents } from "@/hooks/useEvents"
 
 import { Card, CardContent } from "@/components/ui/card"
 import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-    DialogFooter
-  } from "@/components/ui/dialog"
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger
+} from "@/components/ui/dialog"
 
-import { formatDateTime } from '@/lib/utils'
 import { Link } from '@/components/navigation/Link'
 import { Button } from '@/components/ui/button'
+import { formatDateTime } from '@/lib/utils'
 import { Badge } from '../ui/badge'
 
 function AllActiveEventsList({query}) {

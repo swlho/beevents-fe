@@ -1,7 +1,5 @@
 "use client"
 
-import { useEventsByStaffId } from '@/hooks/useEventsByStaffId'
-import React from 'react'
 import { Skeleton } from '@/components/ui/skeleton'
 import DashboardEventCard from './DashboardEventCard'
 

@@ -1,9 +1,9 @@
 "use client"
 
-import React, { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import { Button } from '../ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog'
-import { useRouter } from 'next/navigation'
 
 function BookEventButton(props) {
 
@@ -56,7 +56,7 @@ function BookEventButton(props) {
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger>
-                <Button className='rounded-2xl bg-yellow-400 hover:bg-yellow-100'>{!cost>0? "Book a spot" : "Book spot and pay"}</Button>
+                <Button className='rounded-2xl bg-yellow-400 hover:bg-yellow-100'>{cost===0? "Book a spot" : "Book spot and pay"}</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px] bg-white">
                 <DialogHeader>

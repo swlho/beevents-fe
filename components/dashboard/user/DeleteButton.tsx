@@ -45,7 +45,7 @@ function DeleteButton({user_id, event_id}) {
             setButtonDisabled(false)
             setButtonInnerText("Delete")
             setOpen(false)
-            window.location.reload(false);
+            window.location.reload();
         }
     }
 
