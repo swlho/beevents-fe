@@ -32,7 +32,7 @@ export async function login(formData: FormData) {
       hasLoggedIn$.loggedIn.set(true)
       hasLoggedIn$.staff.email.set(loginData.email)
       revalidatePath('/', 'layout')
-      redirect('/staff/dashboard')
+      redirect('/private/staff/dashboard')
     } else {
       redirect('/error')
     }
