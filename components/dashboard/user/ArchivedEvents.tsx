@@ -20,9 +20,9 @@ if (isFetching){
 
 
   return (
-    data.length == 0 ? <h1>No archived events</h1> :
+    data?.length == 0 ? <h1>No archived events</h1> :
     <div className='flex-wrap items-start'>
-      {data.map((event)=> {
+      {data?.map((event)=> {
         return (
           <DashboardEventCard eventData = {event.data[0]} key={event.data[0].event_id} userarchived={true}/>
         )

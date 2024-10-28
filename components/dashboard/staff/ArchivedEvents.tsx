@@ -21,9 +21,9 @@ function ArchivedEvents({archivedStaffEvents}) {
 
 
   return (
-    data.data.length == 0 ? <h1>No archived events</h1> :
+    data?.data.length == 0 ? <h1>No archived events</h1> :
     <div className='flex-wrap items-start'>
-      {data.data.map((event)=> {
+      {data?.data.map((event)=> {
         return (
           <DashboardEventCard eventData = {event} key={event.event_id} archived={true}/>
         )

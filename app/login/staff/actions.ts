@@ -28,7 +28,7 @@ export async function login(formData: FormData) {
   }
 
   if(data){
-    if (staffLogin[0].password === loginData.password){
+    if (staffLogin[0]?.password === loginData.password){
       hasLoggedIn$.loggedIn.set(true)
       hasLoggedIn$.staff.email.set(loginData.email)
       revalidatePath('/', 'layout')
