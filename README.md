@@ -23,6 +23,7 @@ The project showcases the use of modern frontend development techniques and prac
 ## Live Demo
 
 You can access the live demo of the project [here](https://beevents.vercel.app/).
+(n.b. the demo's backend is running on a free tier Render server plan, and therefore will take approx. 45 secs to spin back up from idle)
 
 ## Backend Repository
 
@@ -51,7 +52,16 @@ cd beevents-fe
 npm install
 ```
 
-**3. Run the project locally:**
+**3. Configure a .env.local file:**
+
+Create a .env.local file in the root directory and populate it with the below key/values, replacing the values with your own instance of Supabase (n.b. values are strings).  Refer to the Supabase documentation for more info.
+
+```
+NEXT_PUBLIC_SUPABASE_URL = <YOUR SUPABASE URL>
+NEXT_PUBLIC_SUPABASE_ANON_KEY = <YOUR SUPABASE ANON KEY>
+```
+
+**4. Run the project locally:**
 
 ```
 npm run dev
