@@ -76,11 +76,25 @@ This will start the local development server, which can be accessed via the term
 #### Sign up/onboarding
 
 1. Click login at the top of the page, and click 'User login' on the pop-up dialog
-2. Create a login using an email and password, and clicking 'Sign up'
+2. Create a login using an email and password, and click 'Sign up'.  A validation email will be sent to your inbox (check 'Junk' folder if it does not appear in your inbox)
 
-> Use a service like <https://internxt.com/temporary-email> to sign up using a temporary email for testing purposes
+> For testing purposes, either:
+>
+> A. Sign up using your own email/password
+>
+> OR
+>
+> B. Use the below test account:
+>
+>> beevents@swlho.com
+>>
+>> password123
+>
+> OR
+>
+> C. Use a service like <https://internxt.com/temporary-email> to sign up using a temporary email address and inbox
 
-3. Validate your login by clicking the link within the email sent to the email (check 'Junk' folder if it does not appear in your inbox)
+3. Validate your login by clicking the link within the email
 
 #### Booking an event
 
@@ -115,7 +129,7 @@ This will start the local development server, which can be accessed via the term
 - View any user archived events.  A user can also either unarchive or delete an event from the dashboard.
 
 9. Under the 'Calendar' tab, a user can scroll through a monthly view to see when a booked event will be held.
-10.  Under the 'Profile' and 'Password' tabs, a user can update their user profile (currently limited to changing user's name).
+10.  Under the 'Profile' and 'Password' tabs, a user can update their user profile (currently limited to changing user's name;  changing password feature not included in this MVP demo).
 
 ### As a staff user
 
@@ -125,9 +139,9 @@ This will start the local development server, which can be accessed via the term
 
 > Use the following staff login for testing:
 >
-> spandie2@example-company.com
->
-> password3
+>> spandie2@example-company.com
+>>
+>> password3
 
 #### Using the dashboard
 
