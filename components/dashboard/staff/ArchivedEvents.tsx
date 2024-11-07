@@ -1,7 +1,7 @@
 "use client"
 
-import { Skeleton } from '@/components/ui/skeleton'
 import DashboardEventCard from './DashboardEventCard'
+import Loading from '@/components/misc/Loading';
 
 //TO-DO: IMPLEMENT USEMUTATION TO RERENDER ONCE EVENT IS DELETED
 function ArchivedEvents({archivedStaffEvents}) {
@@ -12,11 +12,11 @@ function ArchivedEvents({archivedStaffEvents}) {
   const {data, isPending, isFetching} = archivedStaffEvents
 
   if (isPending){
-    return <Skeleton/>
+    return <Loading />
   }
 
   if (isFetching){
-    return <Skeleton/>
+    return <Loading />
   }
 
 

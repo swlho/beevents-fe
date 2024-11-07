@@ -3,18 +3,18 @@
 import React from 'react'
 import UpdateProfileForm from './UpdateProfileForm'
 import { useUserById } from '@/hooks/useUserById'
-import { Skeleton } from '@/components/ui/skeleton'
+import Loading from '@/components/misc/Loading'
 
 function ProfileTab({userId}) {
 
   const {data, isPending, isFetching, isError} = useUserById(userId)
 
   if (isPending){
-    return <Skeleton/>
+    return <Loading />
   }
 
   if (isFetching){
-    return <Skeleton/>
+    return <Loading />
   }
 
   if (isError){

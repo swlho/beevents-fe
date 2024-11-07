@@ -6,9 +6,9 @@ import ActiveEvents from './ActiveEvents'
 import CreateNewEvent from './CreateNewEvent'
 import ArchivedEvents from './ArchivedEvents'
 import PastEvents from './PastEvents'
-import { Skeleton } from '@/components/ui/skeleton'
 import { formatToTimestamp } from '@/lib/utils'
 import { useArchivedEventsByStaffId } from '@/hooks/useArchivedEventsByStaffId'
+import Loading from '@/components/misc/Loading'
 
 function MyEventsTabs({staffEvents}) {
 
@@ -20,11 +20,11 @@ function MyEventsTabs({staffEvents}) {
   const pastEventsArr = []
 
   if (isPending){
-    return <Skeleton/>
+    return <Loading />
   }
 
   if (isFetching){
-    return <Skeleton/>
+    return <Loading />
   }
 
 

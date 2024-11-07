@@ -14,19 +14,19 @@ import {
 import { useEvents } from "@/hooks/useEvents"
 import Link from "next/link"
 import { Button } from "../ui/button"
-import { Skeleton } from "../ui/skeleton"
 import { formatDateTime } from "@/lib/utils"
+import Loading from "./Loading"
 
 export default function EventsCarousel({subtitle, titlestyle, useFilter}){
 
     const {data, isPending, isError, isFetching} = useEvents(false, ["date_time","false"])
 
     if (isPending){
-        return <Skeleton/>
+        return <Loading />
     }
 
     if (isFetching){
-      return <Skeleton/>
+      return <Loading />
   }
 
     if (isError){

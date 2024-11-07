@@ -23,7 +23,7 @@ function DashboardTabs() {
         <TabsContent value="my-events"><MyEvents staffEvents={staffEvents}/></TabsContent>
         <TabsContent value="calendar"><StaffCalendar staffEvents={staffEvents}/></TabsContent>
         <TabsContent value="profile">View your profile here.</TabsContent>
-        <TabsContent value="password">Change your password here.</TabsContent>
+        <TabsContent value="password">Coming soon.  Please contact site admin for help.</TabsContent>
     </Tabs>
   )
 }

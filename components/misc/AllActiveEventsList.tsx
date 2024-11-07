@@ -1,4 +1,3 @@
-import { Skeleton } from '@/components/ui/skeleton'
 import { useEvents } from "@/hooks/useEvents"
 
 import { Card, CardContent } from "@/components/ui/card"
@@ -16,17 +15,18 @@ import { Link } from '@/components/navigation/Link'
 import { Button } from '@/components/ui/button'
 import { formatDateTime } from '@/lib/utils'
 import { Badge } from '../ui/badge'
+import Loading from './Loading'
 
 function AllActiveEventsList({query}) {
 
   const {data, isPending, isError, isFetching} = useEvents(false, query)
 
   if (isPending){
-      return <Skeleton/>
+      return <Loading />
   }
 
   if (isFetching){
-    return <Skeleton/>
+    return <Loading />
   }
 
   if (isError){

@@ -1,8 +1,8 @@
 "use client"
 
 import EventBlock from '@/components/misc/EventBlock'
+import Loading from '@/components/misc/Loading'
 import BackButton from '@/components/navigation/BackButton'
-import { Skeleton } from '@/components/ui/skeleton'
 import { useEventById } from '@/hooks/useEventById'
 import { useParams } from 'next/navigation'
 import React from 'react'
@@ -15,11 +15,11 @@ function EventPage () {
   const {data, isPending, isError, isFetching} = useEventById(eventsid)
 
   if (isPending){
-      return <Skeleton/>
+      return <Loading />
   }
 
   if (isFetching){
-    return <Skeleton/>
+    return <Loading />
 }
 
   if (isError){

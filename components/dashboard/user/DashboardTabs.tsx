@@ -4,10 +4,10 @@ import React, { useContext } from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import MyEvents from './MyEvents'
 import ProfileTab from './ProfileTab'
-import { Skeleton } from '@/components/ui/skeleton'
 import { UserContext } from '@/app/context/user-provider'
 import UserCalendar from './UserCalendar'
 import { useEventsByUserId } from '@/hooks/useEventsByUserId'
+import Loading from '@/components/misc/Loading'
 
 function DashboardTabs() {
 
@@ -19,11 +19,11 @@ function DashboardTabs() {
     const {data, isPending, isError, isFetching} = useEventsByUserId(id, false)
     
     if (isPending){
-      return <Skeleton/>
+      return <Loading />
     }
   
     if (isFetching){
-      return <Skeleton/>
+      return <Loading />
     }
   
     if (isError){
@@ -45,7 +45,7 @@ function DashboardTabs() {
           <TabsContent value="my-events"><MyEvents userId={id} userEvents={data}/></TabsContent>
           <TabsContent value="calendar"><UserCalendar userEvents={data}/></TabsContent>
           <TabsContent value="profile"><ProfileTab userId={id}/></TabsContent>
-          <TabsContent value="password">Change your password here.</TabsContent>
+          <TabsContent value="password">Coming soon.  Please contact site admin for help.</TabsContent>
       </Tabs>
       </>
     )

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import DashboardEventCard from './DashboardEventCard'
-import { Skeleton } from '@/components/ui/skeleton'
+import Loading from '@/components/misc/Loading'
 
 
 //TO-DO: IMPLEMENT USEMUTATION TO RERENDER ONCE EVENT IS DELETED
@@ -11,11 +11,11 @@ function ArchivedEvents({archivedEvents}) {
   const {data, isPending, isFetching} = archivedEvents
 
   if (isPending){
-    return <Skeleton/>
+    return <Loading />
 }
 
 if (isFetching){
-  return <Skeleton/>
+  return <Loading />
 }
 
 

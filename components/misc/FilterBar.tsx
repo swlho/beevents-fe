@@ -28,7 +28,7 @@ function FilterBar({setQuery}) {
   return (
     <div className='flex flex-row outline outline-2 outline-yellow-400 rounded-2xl mb-3 p-2'>
         <Select onValueChange={setSelectorValue} defaultValue={"date_time"}>
-        <SelectTrigger className="w-[300px] border-0">
+        <SelectTrigger className="max-w-96 border-0">
             <SelectValue placeholder="Sort by..." />
         </SelectTrigger>
         <SelectContent className="bg-white">
@@ -37,7 +37,7 @@ function FilterBar({setQuery}) {
             <SelectItem value="cost">Cost</SelectItem>
         </SelectContent>
     </Select>
-    <RadioGroup onValueChange={setOrder} defaultValue="false" className='ml-8'>
+    <RadioGroup onValueChange={setOrder} defaultValue="false" className='ml-1 max-w-full'>
         <div className="flex items-center space-x-2">
             <RadioGroupItem value="false" id="false" />
             <Label htmlFor="false">Ascending</Label>
@@ -47,7 +47,7 @@ function FilterBar({setQuery}) {
             <Label htmlFor="true">Descending</Label>
         </div>
     </RadioGroup>
-    <Button onClick={handleOnClick} className='ml-8 outline outline-2 outline-yellow-400 rounded-2xl'>Apply filter</Button>
+    <Button onClick={handleOnClick} className='ml-8 outline outline-2 outline-yellow-400 rounded-2xl max-w-full'>Apply filter</Button>
     </div>
   )
 }
