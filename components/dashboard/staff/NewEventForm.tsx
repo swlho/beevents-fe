@@ -105,12 +105,13 @@ function NewEventForm() {
                 const {event_id, title, date_time, cost} = response.created_event.data[0]
                 await createStripeProduct(event_id, title, date_time, cost)
                 setSubmitButtonInnerText("Event successfully created!")
-                setAlertText("🎉 Event successfully created! Create another event? 🎉")
+                setAlertText("🎉 Event successfully created! 🎉")
                 reset()
                 setTimeout(()=>{
                     setSubmitButtonInnerText("Create event")
                     setButtonDisabled(false)}, 
                     2000)
+                window.location.reload();
             } else if (response.status === 400) {
                 setButtonDisabled(false)
                 setSubmitButtonInnerText("Create")

@@ -6,9 +6,6 @@ import Loading from '@/components/misc/Loading';
 //TO-DO: IMPLEMENT USEMUTATION TO RERENDER ONCE EVENT IS DELETED
 function ArchivedEvents({archivedStaffEvents}) {
 
-  console.log(archivedStaffEvents);
-  
-
   const {data, isPending, isFetching} = archivedStaffEvents
 
   if (isPending){

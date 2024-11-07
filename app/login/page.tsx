@@ -4,7 +4,7 @@ import { login, signup } from './actions'
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-    description: "Beevents - Login",
+    description: "Beevents - User Login",
   }
   
   export default async function LoginPage() {

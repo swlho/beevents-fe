@@ -30,7 +30,7 @@ export default function EventsCarousel({subtitle, titlestyle, useFilter}){
   }
 
     if (isError){
-        return <span>Error!</span>
+        return <span>Loading error!</span>
     }
 
     const filter = (event)=>{
