@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     description: "Beevents - Payment successful",
   }
   
-  export default async function PaymentSucessPage() {
+  export default async function PaymentSuccessPage() {
   
     return (
     <>
