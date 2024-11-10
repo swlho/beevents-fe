@@ -1,5 +1,7 @@
 'use server'
 
+//TO-DO change to client component
+
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
@@ -22,7 +24,7 @@ export async function login(formData: FormData) {
   }
 
   revalidatePath('/', 'layout')
-  redirect('/')
+  redirect('/private/user/dashboard')
 }
 
 export async function signup(formData: FormData) {
