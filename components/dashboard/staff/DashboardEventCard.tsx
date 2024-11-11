@@ -70,7 +70,7 @@ function DashboardEventCard(props) {
                 {formatDateTime(date_time)}
                 <h2>Location: {location}</h2>
                 <h2>Cost: {cost===0? "Free" : `£${cost / 100}`}</h2>
-                <Link href={`/events/${event_id}`} target='_blank'>
+                <Link href={`/events/${event_id}`} target='_self'>
                 <Button className='bg-yellow-400  rounded-full mt-2 mr-2 hover:bg-yellow-200'>Event Page</Button>
                 </Link>
                 {

@@ -20,13 +20,13 @@ export default function UserProvider({
             const {data, error} = await supabase.auth.getUser()
             if (error || !data?.user){
                 console.log("no user")
-            } else{
+            } else {
+                console.log("there's a user logged in");
                 setUser(data?.user)
             }
         }
         getUser()
-        setLoggedIn(true)
     }, [])
 
-    return <UserContext.Provider value={[user, loggedIn]}>{children}</UserContext.Provider>
+    return <UserContext.Provider value={[user, loggedIn, setLoggedIn]}>{children}</UserContext.Provider>
 }

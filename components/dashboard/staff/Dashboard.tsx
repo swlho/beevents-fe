@@ -3,7 +3,7 @@ import DashboardTabs from './DashboardTabs'
 
 function Dashboard() {
   return (
-    <DashboardTabs />
+      <DashboardTabs />
   )
 }
 

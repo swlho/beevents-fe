@@ -1,11 +1,9 @@
-'use server'
+"use server"
 
-//TO-DO change to client component
-
-import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
 import { createClient } from '@/utils/supabase/server'
+import { revalidatePath } from 'next/cache'
 
 export async function login(formData: FormData) {
   const supabase = createClient()
@@ -22,7 +20,6 @@ export async function login(formData: FormData) {
   if (error) {
     redirect('/error')
   }
-
   revalidatePath('/', 'layout')
   redirect('/private/user/dashboard')
 }
@@ -45,7 +42,6 @@ export async function signup(formData: FormData) {
   if (error) {
     redirect('/error')
   }
-
   revalidatePath('/', 'layout')
   redirect('/signup-successful')
 }

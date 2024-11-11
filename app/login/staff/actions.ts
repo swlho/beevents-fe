@@ -1,14 +1,14 @@
-'use server'
+"use client"
 
-import { revalidatePath } from 'next/cache'
-import { redirect } from 'next/navigation'
-
-import { createClient } from '@/utils/supabase/server'
+import { createClient } from '@/utils/supabase/client'
 import { QueryData } from '@supabase/supabase-js'
-import { hasLoggedIn$ } from '@/app/_stores/_login'
+import { useContext } from 'react'
+import { StaffContext } from '@/lib/context/staff-provider'
+
 
 export async function login(formData: FormData) {
   const supabase = createClient()
+  const state$ = useContext(StaffContext)
 
   // type-casting here for convenience
   // in practice, you should validate your inputs
@@ -24,17 +24,16 @@ export async function login(formData: FormData) {
   const staffLogin: StaffLoginQuery = data;
 
   if (error) {
-    redirect('/error')
+      window.location.href = '/error'
   }
 
   if(data){
     if (staffLogin[0]?.password === loginData.password){
-      hasLoggedIn$.loggedIn.set(true)
-      hasLoggedIn$.staff.email.set(loginData.email)
-      revalidatePath('/', 'layout')
-      redirect('/private/staff/dashboard')
+      state$.setLoggedIn(true)
+      state$.setStaff({email: loginData.email})
+      window.location.href = '/private/staff/dashboard'
     } else {
-      redirect('/error')
+      window.location.href = '/error'
     }
   }
 }

@@ -2,17 +2,17 @@ import {observable} from "@legendapp/state";
 
 interface StaffLogin {
     loggedIn: boolean,
-    setLoggedIn: () => void,
+    // setLoggedIn: () => void,
     staff: {
-        email: string
+        email: string | undefined,
     }
 }
 
 export const hasLoggedIn$ = observable<StaffLogin>({
     loggedIn: false,
-    setLoggedIn: () => {
-        return hasLoggedIn$.loggedIn.toggle},
+    // setLoggedIn: () => {
+    //     return hasLoggedIn$.loggedIn.toggle},
     staff:{
-        email: "",
+        email: undefined,
     }
 })

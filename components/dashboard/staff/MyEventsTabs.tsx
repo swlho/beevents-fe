@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react'
+import React, { useContext } from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import ActiveEvents from './ActiveEvents'
 import CreateNewEvent from './CreateNewEvent'
@@ -9,10 +9,13 @@ import PastEvents from './PastEvents'
 import { formatToTimestamp } from '@/lib/utils'
 import { useArchivedEventsByStaffId } from '@/hooks/useArchivedEventsByStaffId'
 import Loading from '@/components/misc/Loading'
+import { StaffContext } from '@/lib/context/staff-provider'
 
 function MyEventsTabs({staffEvents}) {
+  const { staff_id } = useContext(StaffContext)
+  const [staff_id$, changeStaffId] = staff_id
 
-  const archivedStaffEvents = useArchivedEventsByStaffId(3, true)
+  const archivedStaffEvents = useArchivedEventsByStaffId(staff_id$, true)
 
   const { data, isPending, isFetching } = staffEvents
 

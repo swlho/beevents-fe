@@ -23,8 +23,6 @@ function BookEventButton(props) {
             return data
         }
 
-        console.log(cost, "cost");
-
         if(cost === 0){ //IF EVENT COST IS FREE
             //TRIGGER PATCH TO /USER/ID
             console.log("event is free")

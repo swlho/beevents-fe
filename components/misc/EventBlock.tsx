@@ -1,6 +1,6 @@
 "use client"
 
-import { UserContext } from '@/app/context/user-provider'
+import { UserContext } from '@/lib/context/user-provider'
 import { formatDateTime } from '@/lib/utils'
 import { useContext } from 'react'
 import { Badge } from '../ui/badge'
