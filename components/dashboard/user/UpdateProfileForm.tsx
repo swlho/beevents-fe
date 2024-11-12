@@ -50,18 +50,19 @@ function UpdateProfileForm({data}) {
             setAlertText("")
             setSubmitButtonInnerText("Updating...")
             const {fullName} = values
-            const postBody = await JSON.stringify({
+            const postBody = JSON.stringify({
                 full_name: fullName,
              })
             const response = await fetch(`https://beevents-be.onrender.com/user/${id}`, {method: 'PATCH', headers: {'Content-Type':'application/json'}, body: postBody})
-            if (response.status === 201){
+            if (response.status === 200){
                 setSubmitButtonInnerText("User profile successfully updated!")
                 setAlertText("🎉 User profile successfully updated 🎉")
-                reset()
                 setTimeout(()=>{
                     setSubmitButtonInnerText("Update profile")
-                    setButtonDisabled(false)}, 
-                    2000)
+                    setButtonDisabled(false)
+                    reset()
+                }, 
+                2000)
             } else if (response.status === 400) {
                 setButtonDisabled(false)
                 setSubmitButtonInnerText("Update profile")
