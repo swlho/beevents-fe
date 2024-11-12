@@ -15,11 +15,11 @@ function EventPage () {
   const {data, isPending, isError, isFetching} = useEventById(eventsid)
 
   if (isPending){
-      return <Loading />
+      return <Loading text={"event"}/>
   }
 
   if (isFetching){
-    return <Loading />
+    return <Loading text={"event"}/>
 }
 
   if (isError){

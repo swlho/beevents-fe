@@ -42,11 +42,11 @@ function DashboardTabs() {
   );
 
   if (!resolvedUser) {
-    return <Loading />; // Show loading until `resolvedUser` is available
+    return <Loading text={"dashboard"}/>; // Show loading until `resolvedUser` is available
   }
 
   if (isPending || isFetching) {
-    return <Loading />;
+    return <Loading text={"dashboard"}/>;
   }
 
   if (isError) {

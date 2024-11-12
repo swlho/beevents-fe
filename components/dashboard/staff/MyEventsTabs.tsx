@@ -23,11 +23,11 @@ function MyEventsTabs({staffEvents}) {
   const pastEventsArr = []
 
   if (isPending){
-    return <Loading />
+    return <Loading text={"dashboard"}/>
   }
 
   if (isFetching){
-    return <Loading />
+    return <Loading text={"dashboard"}/>
   }
 
 

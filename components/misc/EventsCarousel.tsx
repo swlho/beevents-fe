@@ -22,11 +22,11 @@ export default function EventsCarousel({subtitle, titlestyle, useFilter}){
     const {data, isPending, isError, isFetching} = useEvents(false, ["date_time","false"])
 
     if (isPending){
-        return <Loading />
+        return <Loading text={"events"}/>
     }
 
     if (isFetching){
-      return <Loading />
+      return <Loading text={"events"}/>
   }
 
     if (isError){

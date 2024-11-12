@@ -21,7 +21,6 @@ function SignOutButtonDialog() {
     const user = useContext(UserContext)
     const userLoggedIn = user[0]
     const changeUserLoggedIn = user[2]
-    console.log(userLoggedIn,"<---is user logged in");
     
    
      const { staff, staffLoggedIn, staff_id, logout } = useContext(StaffContext)

@@ -1,4 +1,5 @@
 import EventsCarousel from "@/components/misc/EventsCarousel"
+import Loading from "@/components/misc/Loading"
 import ForwardButton from "@/components/navigation/AllEventsButton"
 import type { Metadata } from "next"
 

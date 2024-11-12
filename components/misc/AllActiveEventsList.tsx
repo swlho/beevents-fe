@@ -22,11 +22,11 @@ function AllActiveEventsList({query}) {
   const {data, isPending, isError, isFetching} = useEvents(false, query)
 
   if (isPending){
-      return <Loading />
+      return <Loading text={"events"}/>
   }
 
   if (isFetching){
-    return <Loading />
+    return <Loading text={"events"}/>
   }
 
   if (isError){

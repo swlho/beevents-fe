@@ -9,11 +9,11 @@ function ArchivedEvents({archivedStaffEvents}) {
   const {data, isPending, isFetching} = archivedStaffEvents
 
   if (isPending){
-    return <Loading />
+    return <Loading text={"event"}/>
   }
 
   if (isFetching){
-    return <Loading />
+    return <Loading text={"event"}/>
   }
 
 

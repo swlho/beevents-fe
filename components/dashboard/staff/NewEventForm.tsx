@@ -99,7 +99,6 @@ function NewEventForm() {
                 is_archived: false,
             })
             const response = await (await fetch(`https://beevents-be.onrender.com/events/`, {method: 'POST', headers: {'Content-Type':'application/json'}, body: postBody})).json()
-            console.log(response);
             if (response.status_code === 201){
                 //TO-DO - get the event id and put it in the fn
                 const {event_id, title, date_time, cost} = response.created_event.data[0]

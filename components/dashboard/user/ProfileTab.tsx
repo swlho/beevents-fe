@@ -10,11 +10,11 @@ function ProfileTab({userId}) {
   const {data, isPending, isFetching, isError} = useUserById(userId)
 
   if (isPending){
-    return <Loading />
+    return <Loading text={"profile"}/>
   }
 
   if (isFetching){
-    return <Loading />
+    return <Loading text={"profile"}/>
   }
 
   if (isError){

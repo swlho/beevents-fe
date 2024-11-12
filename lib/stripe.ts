@@ -15,8 +15,6 @@ export async function createStripeProduct(event_id, title, date_time, cost){
             currency: 'gbp',
             product: product.id,
         }).then(price => {
-            console.log('Success! Here is your starter subscription product id: ' + product.id);
-            console.log('Success! Here is your starter subscription price id: ' + price.id);
             if(cost>0){
                 createStripePaymentLink(price.id, event_id, title, date_time, cost)
             }
@@ -46,7 +44,6 @@ async function createStripePaymentLink(productPriceId, event_id, title, date_tim
         // //         }
         // }
     }).then(paymentlink => {
-        console.log('Successfully created payment link:' + paymentlink.url)
         return {url: paymentlink.url, priceId: productPriceId}
     }).then(({url, priceId})=>{
         patchEventPaymentUrl(event_id, url, priceId)

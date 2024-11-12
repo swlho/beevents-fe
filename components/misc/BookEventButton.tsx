@@ -25,7 +25,6 @@ function BookEventButton(props) {
 
         if(cost === 0){ //IF EVENT COST IS FREE
             //TRIGGER PATCH TO /USER/ID
-            console.log("event is free")
             const data = await bookEventById(user_id, event_id, cost)
 
             if(data["status code"] === 400 && data.message === "You are already booked into this event"){
@@ -35,7 +34,6 @@ function BookEventButton(props) {
             }
 
             if(data["status code"] === 200) { //change this logic
-                console.log(data["message"]);
                 setButtonInnerText("Booking successful!")
                 setButtonDisabled(true)
                 setCancelButtonText("Exit")
@@ -43,7 +41,6 @@ function BookEventButton(props) {
 
         } else { //IF EVENT IS A PAID EVENT
             //TRIGGER STRIPE API AND THEN REDIRECTS TO PAYMENT PAGE
-            console.log("event needs to be paid!")
             const data = await bookEventById(user_id, event_id, cost)
             if(data){
                 push(data.url)
