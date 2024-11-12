@@ -60,7 +60,6 @@ function UpdateProfileForm({data}) {
                 setTimeout(()=>{
                     setSubmitButtonInnerText("Update profile")
                     setButtonDisabled(false)
-                    reset()
                 }, 
                 2000)
             } else if (response.status === 400) {
